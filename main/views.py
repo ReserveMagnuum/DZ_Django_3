@@ -26,8 +26,9 @@ def sales_by_car(request, car_id):
     try:
         # получите авто и его продажи
         car = Car.objects.get(id=car_id)
-        sale = Sale.objects.get(id=car)
+        sale = Sale.objects.get(id=car_id)
         template_name = 'main/sales.html'
-        return render(request, template_name, {'sale': sale})  # передайте необходимый контекст
+        print(sale.client.last_name)
+        return render(request, template_name, {'car': car, 'sale': sale})  # передайте необходимый контекст
     except Car.DoesNotExist:
         raise Http404('Car not found')
