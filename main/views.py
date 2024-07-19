@@ -25,7 +25,7 @@ def car_details_view(request, car_id):
 def sales_by_car(request, car_id):
     try:
         # получите авто и его продажи
-        car = Car.objects.filter(id=car_id)
+        car = Car.objects.get(id=car_id)
         sale = Sale.objects.filter(car=car)
         template_name = 'main/sales.html'
         print(sale.client.last_name)
